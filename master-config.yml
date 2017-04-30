@@ -1,0 +1,27 @@
+config:
+  sever: default
+  info: This is default sever
+  user: user001
+  password: password001
+  accessmessage: default msg - spring cloud config data it's changed on 2018-04-29 13:25
+---
+
+spring:
+  profiles: develop
+config:
+  sever: develop
+  info: This is develop sever
+  user: user002
+  password: password002
+  accessmessage: welcome to develop server
+
+---
+
+spring:
+  profiles: production
+config:
+  sever: production
+  info: This is production sever
+  user: user003
+  password: password003
+  accessmessage: welcome to production server it's changed on 2018-04-29 13:25
