@@ -1,27 +1,27 @@
 # 운영환경별 환경변수 설정 연구
 개발, 테스트, 운영 환경마다 다른 환경설정 파일 관리 방법  
 구성요소: Spring Boot, Spring Cloud, Spring Bus  
-목표: One Code Multi Use (단 한 번의 빌드로 모든 환경에 대응하기)
+목표: One Code Multi Use (단 한 번의 빌드로 모든 환경에 대응하기)  
 
 ## Spring Cloud Config Git Repository
 Spring Cloud를 이용하기 위해서는 Git을 사용해야 한다. Git Repository를 생성하고 Spring 환경설정파일을 작성한다. (*e.g.* `application.properties` or `application.yml`)
 
-## [Spring Profiles][1]
-Spring은 [Profiles][2] 기능으로 환경정보 설정 추상화(편리한 사용)를 지원한다. `@PropertySource` `@Value`를 이용하여 property를 손쉽게 설정할 수 있다.
-###### @PropertySource
+## Spring Profiles
+Spring은 Profiles 기능으로 환경정보 설정 추상화(편리한 사용)를 지원한다. `@PropertySource` `@Value`를 이용하여 property를 손쉽게 설정할 수 있다.
+###### @PropertySource [link][1]
     @Component
     @PropertySource(value = "file:C:/properties/application-test.properties", ignoreResourceNotFound = true)     // 테스트서버 환경변수
     @PropertySource(value = "file:/properties/application-production.properties", ignoreResourceNotFound = true) // 운영서버 환경변수
     public class ExternalProperty {
     }
-###### @Value
+###### @Value [link][2]
     //name에 바인딩된 데이터가 있으면 name필드에 static으로 대입되고, 없으면 default name에 선언한 데이터가 대입된다.
     @Value("${name:default name}") String name;
 
 ## Spring Boot Profiles
 spring boot는 profiles를 기본으로 사용한다. 그리고 `application.properties` `application.yml`에 입력한 환경변수를 자동으로 인식한다. `spring-boot-configuration-processor`를 사용하면 Java 객체 자동 매핑까지 지원한다. `WAS` 의 `VM` 옵션에 `-Dspring.profiles.active=production` 파리미터를 넘기면 yml의 `production` profiles로 프로젝트의 환경변수가 설정된다. bootRun시 log를 통해 적용된 profiles를 확인할 수 있다. `Intellij` 에서는 `File > Settings > Gradle > VM` 에 설정한다. `Run Configuration > VM` 은 정상작동하지 않는 경우가 있다. 실제 환경에서는 Tomcat이 설치된 서버에 환경변수를 설정한다.
 
-`application.yml`  
+`application.yml` [link][3]
 
     server:
       port: 8000
@@ -49,7 +49,7 @@ spring boot는 profiles를 기본으로 사용한다. 그리고 `application.pro
       message: This is production profiles data
       port: 8200
 
-###### @ConfigurationProperties
+###### @ConfigurationProperties [link][4]
 check `error` : yml의 첫 property 단계를 읽지 못하는 경우가 있다. `null` 발생.
 
       @ConfigurationProperties(prefix = "protest")
@@ -61,7 +61,8 @@ check `error` : yml의 첫 property 단계를 읽지 못하는 경우가 있다.
           //getter and setter
       }
 
-###### @ConfigurationProperties
+###### @EnableConfigurationProperties [link][5]
+`application.yml` 데이터가 바인딩된 ProfilesConfig를 사용하게 해준다.
 
     @RestController
     @EnableConfigurationProperties(ProfilesConfig.class)
@@ -79,7 +80,7 @@ check `error` : yml의 첫 property 단계를 읽지 못하는 경우가 있다.
 ## Spring Cloud Server
 Spring Cloud 프로젝트는 Git 저장소에 Config 데이를 Server가 바라보게 한다. Server는 Git Config 데이터가 업데이트되면 자동으로 업데이트 한다. `spring-cloud-config-server` defendency를 추가해서 사용한다.
 
-`application.yml`
+`application.yml` [link][6]
 
     server:
       port: 8888
@@ -90,9 +91,11 @@ Spring Cloud 프로젝트는 Git 저장소에 Config 데이를 Server가 바라�
             git:
               uri: https://github.com/kangyongho/spring-cloud-config
 
-###### @EnableConfigServer
+###### @EnableConfigServer [link][7]
+spring cloud server로 동작하게 한다.
+
     @SpringBootApplication
-    @EnableConfigServer //spring cloud server로 동작하게 한다.
+    @EnableConfigServer
     public class SpringCloudApplication {
     	public static void main(String[] args) {
     		SpringApplication.run(SpringCloudApplication.class, args);
@@ -103,8 +106,8 @@ Spring Cloud 프로젝트는 Git 저장소에 Config 데이를 Server가 바라�
 ## Spring Cloud Client
 Spring Cloud Client는 Server를 바라본다. 따라서 여러개의 분산 서비스 애플리케이션을 한 번에 관리할 수 있다. `micro architecture` `microservice` 가 가능하다. Git Config가 업데이트되면 `refresh` 명령으로 서버의 재시작 없이도 환경변수를 초기화 할 수 있다. `refresh` 는 `POST` 로 해야한다. 그리고 추가적으로 Spring `spring-boot-starter-actuator` defendency를 classpath에 넣어줘야 한다.
 
-`bootstrap.yml`  
-Spring Cloud에 환경설정을 할 때는 `application.*` 보다 `bootstrap.yml`을 사용하는것이 확실한 설정이 가능하다. 인식을 못하는 경우가 있었다.
+`bootstrap.yml` [link][8]  
+Spring Cloud에 환경설정을 할 때는 `application.*` 보다 `bootstrap.yml`을 사용하는것이 확실한 설정이 가능하다. 인식을 못하는 경우가 있었다. Spring Cloud Server 경로와, 환경변수 파일명을 uri, name에 입력한다.
 
     spring:
       cloud:
@@ -190,11 +193,25 @@ RabbitMQ는 AMQP 프로토콜을 사용하는 메시징 broker다. 핵심 개념
 ###### Others
 Spring Cloud를 이용하면 환경정보를 Config 서버를 이용해서 집중관리하고 빠른 적용이 가능하다. 하지만 Client 서버 Tomcat마다 `spring.profiles.active` 환경변수를 설정해줘야 `profiles` 적용이 가능한 문제가 남아있다.
 
-[1]: https://github.com/kangyongho/spring-property
-[2]: http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#beans-environment
-[3]:
-[4]:
-[5]:
-[6]:
-[7]:
-[8]:
+# 구성 프로젝트 링크
+* [spring-property][9]
+* [spring-profiles][10]
+* [spring-cloud-config-server][11]
+* [spring-cloud-config-client][12]
+* [spring-cloud-bus-client][13]
+* [spring-cloud-config][14]
+
+[1]: spring-property/src/main/java/com/example/config/ExternalProperty.java
+[2]: spring-property/src/main/java/com/example/controller/BasicController.java
+[3]: spring-profiles/src/main/resources/application.yml
+[4]: spring-profiles/src/main/java/com/example/ProfilesConfig.java
+[5]: spring-profiles/src/main/java/com/example/ProfilesController.java
+[6]: spring-cloud-config-server/src/main/resources/application.yml
+[7]: spring-cloud-config-server/src/main/java/com/example/SpringCloudApplication.java
+[8]: spring-cloud-config-client/src/main/resources/bootstrap.yml
+[9]: https://github.com/kangyongho/spring-property
+[10]: https://github.com/kangyongho/spring-profiles
+[11]: https://github.com/kangyongho/spring-cloud-config-server
+[12]: https://github.com/kangyongho/spring-cloud-config-client
+[13]: https://github.com/kangyongho/spring-cloud-bus-client
+[14]: https://github.com/kangyongho/spring-cloud-config
