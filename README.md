@@ -134,6 +134,11 @@ spring cloud server로 동작하게 한다.
     	}
     }
 
+##### Test Spring Cloud Server
+`http://mirlang2.ddns.net/config-server` 에서 Config Server 테스트 가능
+* `default` `http://mirlang2.ddns.net/config-server/master-config/default`  
+* `develop` `http://mirlang2.ddns.net/config-server/master-config/develop`
+* `production` `http://mirlang2.ddns.net/config-server/master-config/production`  
 
 ## Spring Cloud Client
 Spring Cloud Client는 Server를 바라본다. 따라서 여러개의 분산 서비스 애플리케이션을 한 번에 관리할 수 있다. `micro architecture` `microservice` 가 가능하다. Git Config가 업데이트되면 `refresh` 명령으로 서버의 재시작 없이도 환경변수를 초기화 할 수 있다. `refresh` 는 `POST` 로 해야한다. 그리고 추가적으로 Spring `spring-boot-starter-actuator` defendency를 classpath에 넣어줘야 한다.
