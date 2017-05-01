@@ -81,7 +81,8 @@ spring boot는 profiles를 기본으로 사용한다. 그리고 `application.pro
       port: 8200
 
 ##### @ConfigurationProperties [link][4]
-check `error` : yml의 첫 property 단계를 읽지 못하는 경우가 있다. `null` 발생.
+`application.yml` 의 데이터를 ProfilesConfig 클래스에 매핑해준다.  
+`error` : yml의 첫 property 단계를 읽지 못하는 경우가 있다. `null` 발생.
 
     @ConfigurationProperties(prefix = "protest")
     public class ProfilesConfig {
