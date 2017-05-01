@@ -82,14 +82,14 @@ spring boot는 profiles를 기본으로 사용한다. 그리고 `application.pro
 ##### @ConfigurationProperties [link][4]
 check `error` : yml의 첫 property 단계를 읽지 못하는 경우가 있다. `null` 발생.
 
-      @ConfigurationProperties(prefix = "protest")
-      public class ProfilesConfig {
+    @ConfigurationProperties(prefix = "protest")
+    public class ProfilesConfig {
 
-          private String message;
-          private String port;
+        private String message;
+        private String port;
 
-          //getter and setter
-      }
+        //getter and setter
+    }
 
 ##### @EnableConfigurationProperties [link][5]
 `application.yml` 데이터가 바인딩된 ProfilesConfig를 사용하게 해준다.
