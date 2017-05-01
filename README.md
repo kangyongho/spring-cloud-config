@@ -4,7 +4,8 @@
 목표: One Code Multi Use (단 한 번의 빌드로 모든 환경에 대응하기)  
 
 ## Spring Cloud Config Git Repository
-Spring Cloud를 이용하기 위해서는 Git을 사용해야 한다. Git Repository를 생성하고 Spring 환경설정파일을 작성한다. (*e.g.* `master-config.yml`)
+Spring Cloud를 이용하기 위해서는 Git을 사용해야 한다. Git Repository를 생성하고 Spring 환경설정파일을 작성한다.  
+(*e.g.* `master-config.yml`)
 
 `master-config.yml` [link][0]
 
