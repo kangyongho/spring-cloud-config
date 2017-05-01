@@ -202,7 +202,7 @@ Spring Cloud를 이용하면 환경정보를 Config 서버를 이용해서 집�
 * [spring-cloud-config][14]
 
 [1]: https://github.com/kangyongho/spring-property/blob/master/src/main/java/com/example/config/ExternalProperty.java
-[2]: https://github.com/kangyongho/spring-property/tree/master/src/main/java/com/example/controller
+[2]: https://github.com/kangyongho/spring-property/blob/master/src/main/java/com/example/controller/BasicController.java
 [3]: https://github.com/kangyongho/spring-profiles/blob/master/src/main/resources/application.yml
 [4]: https://github.com/kangyongho/spring-profiles/blob/master/src/main/java/com/example/ProfilesConfig.java
 [5]: https://github.com/kangyongho/spring-profiles/blob/master/src/main/java/com/example/ProfilesController.java
