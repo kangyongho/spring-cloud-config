@@ -1,5 +1,5 @@
 config:
-  severname: default
+  name: default
   info: This is default sever
   user: user001
   password: password001
@@ -9,7 +9,7 @@ config:
 spring:
   profiles: develop
 config:
-  severname: develop
+  name: develop
   info: This is develop sever
   user: user002
   password: password002
@@ -20,7 +20,7 @@ config:
 spring:
   profiles: production
 config:
-  severname: production
+  name: production
   info: This is production sever
   user: user003
   password: password003
