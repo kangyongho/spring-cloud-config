@@ -6,8 +6,8 @@
 ## Spring Cloud Config Git Repository
 Spring Cloud를 이용하기 위해서는 Git을 사용해야 한다. Git Repository를 생성하고 Spring 환경설정파일을 작성한다. (*e.g.* `application.properties` or `application.yml`)
 
-## Spring Profiles
-Spring은 [Profiles][1] 기능으로 환경정보 설정 추상화(편리한 사용)를 지원한다. `@PropertySource` `@Value`를 이용하여 property를 손쉽게 설정할 수 있다.
+## [Spring Profiles][1]
+Spring은 [Profiles][2] 기능으로 환경정보 설정 추상화(편리한 사용)를 지원한다. `@PropertySource` `@Value`를 이용하여 property를 손쉽게 설정할 수 있다.
 ###### @PropertySource
     @Component
     @PropertySource(value = "file:C:/properties/application-test.properties", ignoreResourceNotFound = true)     // 테스트서버 환경변수
@@ -50,6 +50,7 @@ spring boot는 profiles를 기본으로 사용한다. 그리고 `application.pro
       port: 8200
 
 ###### @ConfigurationProperties
+check `error` : yml의 첫 property 단계를 읽지 못하는 경우가 있다. `null` 발생.
 
       @ConfigurationProperties(prefix = "protest")
       public class ProfilesConfig {
@@ -189,4 +190,11 @@ RabbitMQ는 AMQP 프로토콜을 사용하는 메시징 broker다. 핵심 개념
 ###### Others
 Spring Cloud를 이용하면 환경정보를 Config 서버를 이용해서 집중관리하고 빠른 적용이 가능하다. 하지만 Client 서버 Tomcat마다 `spring.profiles.active` 환경변수를 설정해줘야 `profiles` 적용이 가능한 문제가 남아있다.
 
-[1]: http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#beans-environment
+[1]: https://github.com/kangyongho/spring-property
+[2]: http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#beans-environment
+[3]:
+[4]:
+[5]:
+[6]:
+[7]:
+[8]:
