@@ -201,14 +201,14 @@ Spring Cloud를 이용하면 환경정보를 Config 서버를 이용해서 집�
 * [spring-cloud-bus-client][13]
 * [spring-cloud-config][14]
 
-[1]: spring-property/src/main/java/com/example/config/ExternalProperty.java
-[2]: spring-property/src/main/java/com/example/controller/BasicController.java
-[3]: spring-profiles/src/main/resources/application.yml
-[4]: spring-profiles/src/main/java/com/example/ProfilesConfig.java
-[5]: spring-profiles/src/main/java/com/example/ProfilesController.java
-[6]: spring-cloud-config-server/src/main/resources/application.yml
-[7]: spring-cloud-config-server/src/main/java/com/example/SpringCloudApplication.java
-[8]: spring-cloud-config-client/src/main/resources/bootstrap.yml
+[1]: https://github.com/kangyongho/spring-property/blob/master/src/main/java/com/example/config/ExternalProperty.java
+[2]: https://github.com/kangyongho/spring-property/tree/master/src/main/java/com/example/controller
+[3]: https://github.com/kangyongho/spring-profiles/blob/master/src/main/resources/application.yml
+[4]: https://github.com/kangyongho/spring-profiles/blob/master/src/main/java/com/example/ProfilesConfig.java
+[5]: https://github.com/kangyongho/spring-profiles/blob/master/src/main/java/com/example/ProfilesController.java
+[6]: https://github.com/kangyongho/spring-cloud-config-server/blob/master/src/main/resources/application.yml
+[7]: https://github.com/kangyongho/spring-cloud-config-server/blob/master/src/main/java/com/example/SpringCloudApplication.java
+[8]: https://github.com/kangyongho/spring-cloud-bus-client/blob/master/src/main/resources/bootstrap.yml
 [9]: https://github.com/kangyongho/spring-property
 [10]: https://github.com/kangyongho/spring-profiles
 [11]: https://github.com/kangyongho/spring-cloud-config-server
