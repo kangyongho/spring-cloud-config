@@ -45,7 +45,7 @@ Spring은 Profiles 기능으로 환경정보 설정 추상화(편리한 사용)�
     public class ExternalProperty {
     }
 ##### @Value [link][2]
-    //name에 바인딩된 데이터가 있으면 name필드에 static으로 대입되고, 없으면 default name에 선언한 데이터가 대입된다.
+    //name에 바인딩된 데이터가 있으면 name필드에 static으로 대입되고 없으면 default name에 선언한 데이터가 대입된다.
     @Value("${name:default name}") String name;
 
 ## Spring Boot Profiles
