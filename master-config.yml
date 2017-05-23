@@ -13,7 +13,7 @@ config:
   info: This is develop sever
   user: user002
   password: password002
-  accessmessage: welcome to develop server
+  accessmessage: welcome to develop server Android RabbitMQ!
 
 ---
 
