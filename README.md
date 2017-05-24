@@ -241,6 +241,9 @@ Spring Cloud를 이용하면 환경정보를 Config 서버를 이용해서 집�
 # 추가 정보
 Spring Cloud보다 넓은 개념은 JNDI, LDAP이 있다. 더 많은 역할을 하며 LDAP을 Java로 구현한 것이 JNDI라고 생각하면 된다. Spring LDAP은 JNDI를 쉽게 사용할 수 있게 한다. 그리고 JdbcTemplate 스타일, JPA/Hibernate 어노테이션 스타일을 지원하고 Template 패턴을 적용해 반복적인 try catch 구문 등을 줄여준다.
 
+# RabbitMQ Push Server
+Google GCM Push Service 보다 RabbitMQ 메시지 브로커로 Push Server를 구축하면 관리자의 입장에서 서비스를 컨트롤 할 수 있다. 안드로이드 서비스로 RabbitMQ에서 메시지를 받고 Notification으로 연결할 수 있다.
+
 [0]: https://github.com/kangyongho/spring-cloud-config/blob/master/master-config.yml
 [1]: https://github.com/kangyongho/spring-property/blob/master/src/main/java/com/example/config/ExternalProperty.java
 [2]: https://github.com/kangyongho/spring-property/blob/master/src/main/java/com/example/controller/BasicController.java
