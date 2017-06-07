@@ -175,6 +175,9 @@ Spring Cloud에 환경설정을 할 때는 `application.*` 보다 `bootstrap.yml
 `refresh`  
 크롬 확장도구 POST MAN을 이용해서 POST `refresh` 요청을 한다. `localhost:8080/refresh` 호출 후 Tomcat log를 보면 재설정 로그를 확인할 수 있다.
 
+`auto configuration`  
+spring boot 이용시 spring cloud server로부터 정보를 수신하면 spring boot의 auto configuration이 동작한다. 즉 `application.yml`에 server에서 받은 profiles의 yaml 정보가 자동 매핑된다. 자신만의 커스텀 매핑을 사용하려면 `@ConfigurationProperties(prefix = "<property>")` `@EnableConfigurationProperties(<Config>.class)` dependency를 이용하면 된다.
+
 ## Spring Cloud Bus
 Spring Cloud Bus를 사용하려면 `spring-cloud-starter-bus-amqp` defendency를 추가하고 RabbitMQ 설치가 필요하다. Spring Profiles, Spring Cloud를 이용하면 환경설정용 Config Server를 상단에 두고 `microservice` `distributed` 환경에 간편히 설정정보를 업데이트하고 관리할 수 있다. 그러나 업데이트를 위해서는 수 맣은 Client에게 `refresh` 명령을 수동으로 내려야 한다. 물론 스크립트나 간단한 메서드를 정해두고 사용할 수도 있지만 부지런함은 다른 곳에 사용하자.  
 Spring Cloud Bus는 AMQP 프로토콜을 지원하는 RabbitMQ 메시징 오픈소스 서비스를 이용하여 단 한번의 `refresh` 로 같은 서버를 바라보는 Client에게 환경정보 업데이트를 가능하게 지원한다.
