@@ -109,6 +109,32 @@ spring boot는 profiles를 기본으로 사용한다. 그리고 `application.pro
         }
     }
 
+##### @ConfigurationProperties + @Configuration 조합 패턴
+빈으로 등록하고 사용한다. `@Component`로 하지 않는 이유는 spring scope로 관리하기 위함.
+
+    @Configuration
+    @ConfigurationProperties(prefix = "protest")
+    public class ProfilesConfig {
+
+        private String message;
+        private String port;
+
+        //getter and setter
+    }
+
+#### `use case` RestTemplate credential, RestTemplateBuilder
+    @Service
+    public class AuthRestTemplate {
+
+        private final RestTemplate restTemplate;
+
+        @Autowired
+        public AuthRestTemplate(RestTemplateBuilder builder, PropertyConfig propertySource) {
+            this.restTemplate = builder.basicAuthorization(propertySource.getUser(), propertySource.getPassword()).build();
+        }
+    }
+
+
 ## Spring Cloud Server
 Spring Cloud 프로젝트는 Git 저장소에 Config 데이를 Server가 바라보게 한다. Server는 Git Config 데이터가 업데이트되면 자동으로 업데이트 한다. `spring-cloud-config-server` defendency를 추가해서 사용한다.
 
