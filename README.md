@@ -259,7 +259,7 @@ RabbitMQ는 AMQP 프로토콜을 사용하는 메시징 broker다. 핵심 개념
 ##### Others
 Spring Cloud를 이용하면 환경정보를 Config 서버를 이용해서 집중관리하고 빠른 적용이 가능하다. 하지만 Client 서버 Tomcat마다 `spring.profiles.active` 환경변수를 설정해줘야 `profiles` 적용이 가능한 문제가 남아있다.
 
-# 프로젝트 링크
+## 프로젝트 링크
 * [spring-property][9]
 * [spring-profiles][10]
 * [spring-cloud-config-server][11]
@@ -267,11 +267,15 @@ Spring Cloud를 이용하면 환경정보를 Config 서버를 이용해서 집�
 * [spring-cloud-bus-client][13]
 * [spring-cloud-config][14]
 
-# 추가 정보
+## 추가 정보
 Spring Cloud보다 넓은 개념은 JNDI, LDAP이 있다. 더 많은 역할을 하며 LDAP을 Java로 구현한 것이 JNDI라고 생각하면 된다. Spring LDAP은 JNDI를 쉽게 사용할 수 있게 한다. 그리고 JdbcTemplate 스타일, JPA/Hibernate 어노테이션 스타일을 지원하고 Template 패턴을 적용해 반복적인 try catch 구문 등을 줄여준다.
 
-# RabbitMQ Push Server
+## RabbitMQ Push Server
 Google GCM Push Service 보다 RabbitMQ 메시지 브로커로 Push Server를 구축하면 관리자의 입장에서 서비스를 컨트롤 할 수 있다. 안드로이드 서비스로 RabbitMQ에서 메시지를 받고 Notification으로 연결할 수 있다.
+
+## Spring Security
+Office Drive 프로젝트를 참고하자. Spring Security가 적용되어 있다.  
+[office drive][15] 프로젝트는 Rest API Server, Web, Android Applcation 세 가지 프로젝트로 구성되어 있다.  
 
 [0]: https://github.com/kangyongho/spring-cloud-config/blob/master/master-config.yml
 [1]: https://github.com/kangyongho/spring-property/blob/master/src/main/java/com/example/config/ExternalProperty.java
@@ -288,3 +292,4 @@ Google GCM Push Service 보다 RabbitMQ 메시지 브로커로 Push Server를 �
 [12]: https://github.com/kangyongho/spring-cloud-config-client
 [13]: https://github.com/kangyongho/spring-cloud-bus-client
 [14]: https://github.com/kangyongho/spring-cloud-config
+[15]: https://github.com/kangyongho/office-drive
