@@ -50,7 +50,7 @@ Spring은 Profiles 기능으로 환경정보 설정 추상화(편리한 사용)�
     @Value("${name:default name}") String name;
 
 ## Spring Boot Profiles
-spring boot는 profiles를 기본으로 사용한다. 그리고 `application.properties` `application.yml`에 입력한 환경변수를 자동으로 인식한다. `spring-boot-configuration-processor`를 사용하면 Java 객체 자동 매핑까지 지원한다. `WAS` 의 `VM` 옵션에 `-Dspring.profiles.active=production` 파리미터를 넘기면 yml의 `production` profiles로 프로젝트의 환경변수가 설정된다. bootRun시 log를 통해 적용된 profiles를 확인할 수 있다. `Intellij` 에서는 `File > Settings > Gradle > VM` 에 설정한다. `Run Configuration > VM` 은 정상작동하지 않는 경우가 있다. 실제 환경에서는 Tomcat이 설치된 서버에 환경변수를 설정한다.
+spring boot는 profiles를 기본으로 사용한다. 그리고 `application.properties` `application.yml`에 입력한 환경변수를 자동으로 인식한다. `spring-boot-configuration-processor`를 사용하면 Java 객체 자동 매핑까지 지원한다. `WAS` 의 `VM` 옵션에 `-Dspring.profiles.active=production` 파라미터를 넘기면 yml의 `production` profiles로 프로젝트의 환경변수가 설정된다. bootRun시 log를 통해 적용된 profiles를 확인할 수 있다. `Intellij` 에서는 `File > Settings > Gradle > VM` 에 설정한다. `Run Configuration > VM` 은 정상작동하지 않는 경우가 있다. 실제 환경에서는 Tomcat이 설치된 서버에 환경변수를 설정한다.
 
 `application.yml` [link][3]
 
